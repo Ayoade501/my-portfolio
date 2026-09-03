@@ -1,0 +1,529 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ayoade Naheem | Developer Portfolio OS</title>
+
+  <!-- Bootstrap (only used for its grid/utility helpers here and there,
+       most of the visual design is custom CSS in style.css) -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- Google Font: Inter. Loaded from Google's CDN, not a Microsoft asset,
+       so this keeps the "inspired by Windows 11" promise without copying it. -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- =========================================================
+       BOOT SCREEN
+       A short loading screen that fades out. Purely cosmetic —
+       it sells the "this is an operating system" feeling on first load.
+       ========================================================= -->
+  <div class="boot-screen" id="bootScreen">
+    <div class="boot-logo">AN</div>
+    <p class="boot-text">Starting Naheem OS...</p>
+  </div>
+
+  <!-- =========================================================
+       DESKTOP
+       This is the main "screen" of the fake OS. Everything else
+       (windows, start menu, taskbar) sits on top of this.
+       ========================================================= -->
+  <main class="desktop" id="desktop">
+
+    <!-- Desktop icons container -->
+    <div class="desktop-icons">
+      <button class="desktop-icon" data-app="about">
+        <span class="icon-glyph">👤</span>
+        <span class="icon-label">About Me</span>
+      </button>
+
+      <button class="desktop-icon" data-app="skills">
+        <span class="icon-glyph">💻</span>
+        <span class="icon-label">Skills</span>
+      </button>
+
+      <button class="desktop-icon" data-app="projects">
+        <span class="icon-glyph">📁</span>
+        <span class="icon-label">Projects</span>
+      </button>
+
+      <button class="desktop-icon" data-app="security">
+        <span class="icon-glyph">🛡️</span>
+        <span class="icon-label">Security Journey</span>
+      </button>
+
+      <button class="desktop-icon" data-app="resume">
+        <span class="icon-glyph">📄</span>
+        <span class="icon-label">Resume</span>
+      </button>
+
+      <button class="desktop-icon" data-app="contact">
+        <span class="icon-glyph">✉️</span>
+        <span class="icon-label">Contact</span>
+      </button>
+    </div>
+
+    <!-- =========================================================
+         WINDOW: About Me
+         ========================================================= -->
+   <section class="app-window" id="window-about" data-app="about">
+      <header class="window-titlebar">
+        <div class="window-title">
+          <span class="window-title-icon">👤</span>
+          <span>About Me</span>
+        </div>
+        <div class="window-controls">
+          <button class="window-btn minimize-btn" aria-label="Minimize window">&#8211;</button>
+          <button class="window-btn maximize-btn" aria-label="Maximize window">&#9633;</button>
+          <button class="window-btn close-btn" aria-label="Close window">&times;</button>
+        </div>
+      </header>
+      <div class="window-body">
+
+
+<div class="me1">
+  <section class="intro-card">
+    <div class="card-image-container">
+        <img src="images/IMG_09.jpg" alt="Ayoade Naheem" class="card-img">
+    </div>
+    <div class="card-content">
+        <h1>Hello, I'm<br>Ayoade Naheem</h1>
+        <hr class="divider">
+        <h2>Front-End Developer & Application Security Student</h2>
+    </div>
+</section>
+</div>
+       <div class="me2"> <section class="about-hero">
+    <div class="about-content">
+        <h1>About Me</h1>
+        <p>
+            I am a Junior front-end developer and an application security student
+            passionate about building and securing web applications. I enjoy turning
+            ideas into functional websites while continously improving my skills in modern
+            web development and secure security skills 
+            My goal is to become an Application Security Analyst who genuinely 
+            understands both sides: how developers build software, and how that 
+            software can be attacked and defended.
+        </p>
+    </div>
+    <div class="about-image-container">
+        <img src="./images/IMG_09.jpg" alt="Ayoade Naheem" class="profile-img">
+    </div>
+</section></div>
+
+
+
+
+
+        <div class="about-flex-container">
+          <div class="about-flex-item about-text-item">
+            <h1 class="about-name">Ayoade Naheem</h1>
+            <p class="about-tagline">Developer-in-training &middot; Application Security Student</p>
+            <h2 class="hero">
+              I build premium front-end <br>Scalable REsponsive Website <br> that works reliably
+            </h2>
+
+            <p class="about-paragraph">
+              I'm currently learning web development as part of a longer journey toward
+              Application Security. My reasoning is simple: to secure a web application
+              properly, I first need to understand how one is actually built.
+            </p>
+
+            <p class="about-paragraph">
+              I've completed Level One of a structured web development curriculum
+              (HTML, CSS, Bootstrap, and an introduction to JavaScript), and I'm
+              studying Application Security alongside it &mdash; covering topics like
+              JavaScript, HTTP and web architecture, and web security fundamentals.
+            </p>
+
+            <p class="about-paragraph">
+              My goal is to become an Application Security Analyst who genuinely
+              understands both sides: how developers build software, and how that
+              software can be attacked and defended.
+            </p>
+
+            <div class="about-goals">
+              <h2 class="section-subheading">Currently working on</h2>
+              <ul class="about-goals-list">
+                <li>Deepening my JavaScript fundamentals</li>
+                <li>Progressing through the Application Security curriculum</li>
+                <li>Building real, working projects (like this one)</li>
+              </ul>
+            </div>
+          </div>
+           <div class="about-flex-item about-photo-item">
+            <img src="./images/IMG_08.jpg" alt="Photo of Ayoade Naheem" class="profile-photo">
+          </div>
+        </div>
+                <div class="about-cta-row">
+          <button type="button" class="app-link-btn app-link-btn-primary" data-app="projects">View Project --→</button>
+          <button type="button" class="app-link-btn" data-app="resume">View Resume --→</button>
+          <button type="button" class="app-link-btn" data-app="contact">Contact Me --→</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- =========================================================
+         WINDOW: Skills
+         ========================================================= -->
+    <section class="app-window" id="window-skills" data-app="skills">
+      <header class="window-titlebar">
+        <div class="window-title">
+          <span class="window-title-icon">💻</span>
+          <span>Skills</span>
+        </div>
+        <div class="window-controls">
+          <button class="window-btn minimize-btn" aria-label="Minimize window">&#8211;</button>
+          <button class="window-btn maximize-btn" aria-label="Maximize window">&#9633;</button>
+          <button class="window-btn close-btn" aria-label="Close window">&times;</button>
+        </div>
+      </header>
+      <div class="window-body">
+        <div class="skills-flex-container">
+
+          <div class="skills-flex-item">
+            <h2 class="section-subheading">Web Development</h2>
+            <ul class="skill-list">
+              <li class="skill-row">
+                <span class="skill-name">HTML</span>
+                <span class="skill-level skill-level-intermediate">Intermediate</span>
+              </li>
+              <li class="skill-row">
+                <span class="skill-name">CSS</span>
+                <span class="skill-level skill-level-intermediate">Intermediate</span>
+              </li>
+              <li class="skill-row">
+                <span class="skill-name">Bootstrap</span>
+                <span class="skill-level skill-level-beginner">Beginner</span>
+              </li>
+              <li class="skill-row">
+                <span class="skill-name">JavaScript</span>
+                <span class="skill-level skill-level-beginner">Beginner</span>
+              </li>
+            </ul>
+          </div>
+
+          <div class="skills-flex-item">
+            <h2 class="section-subheading">Application Security</h2>
+            <ul class="skill-list">
+              <li class="skill-row">
+                <span class="skill-name">Web Security Fundamentals</span>
+                <span class="skill-level skill-level-learning">Learning</span>
+              </li>
+              <li class="skill-row">
+                <span class="skill-name">HTTP &amp; Web Architecture</span>
+                <span class="skill-level skill-level-learning">Learning</span>
+              </li>
+              <li class="skill-row">
+                <span class="skill-name">Social Engineering Fundamentals</span>
+                <span class="skill-level skill-level-learning">Learning</span>
+              </li>
+              <li class="skill-row">
+                <span class="skill-name">Identity Management</span>
+                <span class="skill-level skill-level-learning">Learning</span>
+              </li>
+            </ul>
+          </div>
+
+        </div>
+        
+      </div>
+    </section>
+
+    <!-- =========================================================
+         WINDOW: Projects
+         The list itself is rendered by JavaScript from an array
+         in script.js — see the notes at the very end for how to
+         add a new project.
+         ========================================================= -->
+    <section class="app-window" id="window-projects" data-app="projects">
+      <header class="window-titlebar">
+        <div class="window-title">
+          <span class="window-title-icon">📁</span>
+          <span>Projects</span>
+        </div>
+        <div class="window-controls">
+          <button class="window-btn minimize-btn" aria-label="Minimize window">&#8211;</button>
+          <button class="window-btn maximize-btn" aria-label="Maximize window">&#9633;</button>
+          <button class="window-btn close-btn" aria-label="Close window">&times;</button>
+        </div>
+      </header>
+      <div class="window-body">
+        <!-- JavaScript fills this container with project cards -->
+        <div class="projects-flex-container" id="projectsContainer"></div>
+      </div>
+    </section>
+
+    <!-- =========================================================
+         WINDOW: Security Journey
+         ========================================================= -->
+    <section class="app-window" id="window-security" data-app="security">
+      <header class="window-titlebar">
+        <div class="window-title">
+          <span class="window-title-icon">🛡️</span>
+          <span>Security Journey</span>
+        </div>
+        <div class="window-controls">
+          <button class="window-btn minimize-btn" aria-label="Minimize window">&#8211;</button>
+          <button class="window-btn maximize-btn" aria-label="Maximize window">&#9633;</button>
+          <button class="window-btn close-btn" aria-label="Close window">&times;</button>
+        </div>
+      </header>
+      <div class="window-body">
+
+        <div class="security-block">
+          <h2 class="section-subheading">What is Application Security?</h2>
+          <p class="about-paragraph">
+            Application Security (AppSec) focuses on finding and fixing security
+            weaknesses inside the software itself &mdash; the code, the logic, and how
+            an app handles data &mdash; rather than just the network it runs on.
+          </p>
+        </div>
+
+        <div class="security-block">
+          <h2 class="section-subheading">What I'm currently learning</h2>
+          <ul class="security-list">
+            <li>JavaScript and web architecture, so I understand how the applications I'll be securing are actually built</li>
+            <li>HTTP and how browsers and servers communicate</li>
+            <li>Social engineering fundamentals and identity management</li>
+            <li>Core web security concepts that connect directly to my web development learning</li>
+          </ul>
+        </div>
+
+        <div class="security-block">
+          <h2 class="section-subheading">Why I'm learning web development first</h2>
+          <p class="about-paragraph">
+            I understand how web applications are built, and I'm learning how to
+            identify and prevent security problems in them. Building this portfolio
+            myself &mdash; and applying small security habits while doing it, like
+            avoiding <code>innerHTML</code> for dynamic content and using safe
+            attributes on external links &mdash; is part of that practice.
+          </p>
+        </div>
+
+        <div class="security-block">
+          <h2 class="section-subheading">Future goals</h2>
+          <ul class="security-list">
+            <li>Continue through the Application Security curriculum</li>
+            <li>Build hands-on practice through structured labs</li>
+            <li>Document security-related lessons on future projects, not just describe them</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- WINDOW: Resume-->
+    <section class="app-window" id="window-resume" data-app="resume">
+      <header class="window-titlebar">
+        <div class="window-title">
+          <span class="window-title-icon">📄</span>
+          <span>Resume</span>
+        </div>
+        <div class="window-controls">
+          <button class="window-btn minimize-btn" aria-label="Minimize window">&#8211;</button>
+          <button class="window-btn maximize-btn" aria-label="Maximize window">&#9633;</button>
+          <button class="window-btn close-btn" aria-label="Close window">&times;</button>
+        </div>
+      </header>
+      <div class="window-body">
+
+        <div class="resume-header-row">
+          <div>
+            <h1 class="about-name">Ayoade Naheem</h1>
+            <p class="about-tagline">Developer-in-training &middot; Application Security Student</p>
+          </div>
+          <!-- This button currently just points to a PDF path that doesn't
+               exist yet. Once you export a CV as a PDF, drop it into the
+               project root as "resume.pdf" and this link will work as-is. -->
+          <a href="resume.pdf" class="cv-download-btn" download>Download CV (PDF)</a>
+        </div>
+
+        <div class="security-block">
+          <h2 class="section-subheading">Profile</h2>
+          <p class="about-paragraph">
+            Developer-in-training studying Application Security. Learning web
+            development to understand how applications are built, so I can learn
+            to secure them properly.
+          </p>
+        </div>
+
+        <div class="security-block">
+          <h2 class="section-subheading">Education</h2>
+          <ul class="security-list">
+            <li>SQI College of ICT &mdash; Application Security Curriculum (in progress)</li>
+            <li>SQI College of ICT &mdash; Web Development, Level One completed</li>
+          </ul>
+        </div>
+
+        <div class="security-block">
+          <h2 class="section-subheading">Technical Skills</h2>
+          <p class="about-paragraph">HTML, CSS, Bootstrap, JavaScript (beginner), web security fundamentals (learning)</p>
+        </div>
+
+        <div class="security-block">
+          <h2 class="section-subheading">Application Security Journey</h2>
+          <p class="about-paragraph">
+            Currently progressing through an Application Security curriculum
+            covering JavaScript, HTTP &amp; web architecture, social engineering
+            fundamentals, and identity management.
+          </p>
+        </div>
+
+        <div class="security-block">
+          <h2 class="section-subheading">Projects</h2>
+          <p class="about-paragraph">See the Projects app for full details and links.</p>
+        </div>
+
+        <div class="security-block">
+          <h2 class="section-subheading">Contact</h2>
+          <ul class="security-list">
+            <li>Email: ayoadenaheem@gmail.com</li>
+            <li>Phone: 08032223403</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- =========================================================
+         WINDOW: Contact
+         No backend exists, so this form is a front-end-only mockup.
+         See script.js for exactly what happens on submit.
+         ========================================================= -->
+    <section class="app-window" id="window-contact" data-app="contact">
+      <header class="window-titlebar">
+        <div class="window-title">
+          <span class="window-title-icon">✉️</span>
+          <span>Contact</span>
+        </div>
+        <div class="window-controls">
+          <button class="window-btn minimize-btn" aria-label="Minimize window">&#8211;</button>
+          <button class="window-btn maximize-btn" aria-label="Maximize window">&#9633;</button>
+          <button class="window-btn close-btn" aria-label="Close window">&times;</button>
+        </div>
+      </header>
+      <div class="window-body">
+
+        <div class="contact-flex-container">
+          <div class="contact-flex-item">
+            <h2 class="section-subheading">Reach me directly</h2>
+            <ul class="contact-links-list">
+              <li>
+                <a href="mailto:ayoadenaheem@gmail.com" class="contact-link">
+                  <span>✉️</span> ayoadenaheem@gmail.com
+                </a>
+              </li>
+              <li>
+                <a href="tel:+2348032223403" class="contact-link">
+                  <span>📞</span> 08032223403
+                </a>
+              </li>
+          
+              <li>
+                <a href="https://github.com/" target="_blank" rel="noopener noreferrer" class="contact-link">
+                  <span>💻</span> GitHub (add your username link here)
+                </a>
+              </li>
+              <li>
+                <a href="https://linkedin.com/" target="_blank" rel="noopener noreferrer" class="contact-link">
+                  <span>🔗</span> LinkedIn (add your profile link here)
+                </a>
+              </li>
+            </ul>
+          </div>
+
+          <div class="contact-flex-item">
+            <h2 class="section-subheading">Send a message</h2>
+            
+            <form id="contactForm" class="contact-form" novalidate>
+              <label for="contactName">Name</label>
+              <input type="text" id="contactName" name="name" required maxlength="80">
+
+              <label for="contactEmail">Email</label>
+              <input type="email" id="contactEmail" name="email" required maxlength="120">
+
+              <label for="contactMessage">Message</label>
+              <textarea id="contactMessage" name="message" rows="4" required maxlength="1000"></textarea>
+
+              <button type="submit" class="cv-download-btn contact-submit-btn">Send Message</button>
+              <p id="contactStatus" class="contact-status" role="status" aria-live="polite"></p>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- =========================================================
+       START MENU
+       ========================================================= -->
+  <div class="start-menu" id="startMenu">
+    <div class="start-menu-search">
+      <input type="text" id="startSearchInput" placeholder="Type to search apps" aria-label="Search applications">
+    </div>
+    <div class="start-menu-apps" id="startMenuApps">
+      <button class="start-app-btn" data-app="about">
+        <span class="icon-glyph">👤</span><span>About Me</span>
+      </button>
+      <button class="start-app-btn" data-app="skills">
+        <span class="icon-glyph">💻</span><span>Skills</span>
+      </button>
+      <button class="start-app-btn" data-app="projects">
+        <span class="icon-glyph">📁</span><span>Projects</span>
+      </button>
+      <button class="start-app-btn" data-app="security">
+        <span class="icon-glyph">🛡️</span><span>Security Journey</span>
+      </button>
+      <button class="start-app-btn" data-app="resume">
+        <span class="icon-glyph">📄</span><span>Resume</span>
+      </button>
+      <button class="start-app-btn" data-app="contact">
+        <span class="icon-glyph">✉️</span><span>Contact</span>
+      </button>
+    </div>
+    <div class="start-menu-footer">
+      <div class="start-user">
+        <span class="start-user-avatar">AN</span>
+        <span>Ayoade Naheem</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- =========================================================
+       TASKBAR
+       ========================================================= -->
+  <footer class="taskbar">
+    <button class="start-btn" id="startBtn" aria-label="Open start menu" aria-expanded="false">
+      <span class="start-btn-logo">⊞</span>
+    </button>
+
+    <button class="taskbar-search-btn" id="taskbarSearchBtn" aria-label="Search">
+      🔍
+    </button>
+
+    <div class="taskbar-pinned" id="taskbarPinned">
+      <button class="taskbar-app-btn" data-app="about" title="About Me">👤</button>
+      <button class="taskbar-app-btn" data-app="skills" title="Skills">💻</button>
+      <button class="taskbar-app-btn" data-app="projects" title="Projects">📁</button>
+      <button class="taskbar-app-btn" data-app="security" title="Security Journey">🛡️</button>
+      <button class="taskbar-app-btn" data-app="resume" title="Resume">📄</button>
+      <button class="taskbar-app-btn" data-app="contact" title="Contact">✉️</button>
+    </div>
+
+    <div class="taskbar-tray">
+      <div class="taskbar-clock">
+        <span id="taskbarTime">--:--</span>
+        <span id="taskbarDate">-- --- ----</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/script.js"></script>
+</body>
+</html>

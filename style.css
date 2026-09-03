@@ -1,0 +1,1074 @@
+/* =============================================================
+   DESIGN TOKENS
+   Centralising colours/spacing here means changing the whole
+   look later (e.g. a lighter theme) mostly means editing this
+   one block instead of hunting through the whole file.
+   ============================================================= */
+:root {
+  --bg-desktop-start: #131629;
+  --bg-desktop-end: #1f2444;
+  --accent: #4fd1c5;          /* teal accent — used for highlights/links */
+  --accent-soft: rgba(79, 209, 197, 0.18);
+  --danger: #ef6f6f;          /* used only for the close button hover */
+  --glass-bg: rgba(255, 255, 255, 0.07);
+  --glass-border: rgba(255, 255, 255, 0.14);
+  --taskbar-bg: rgba(18, 20, 38, 0.78);
+  --window-bg: rgba(24, 27, 48, 0.92);
+  --text-primary: #eef1fb;
+  --text-secondary: #a3aac4;
+  --radius-lg: 16px;
+  --radius-md: 10px;
+  --radius-sm: 6px;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Inter', system-ui, -apple-system, Arial, sans-serif;
+  color: var(--text-primary);
+  overflow: hidden; /* the "desktop" fills the viewport, no page scroll */
+}
+
+button {
+  font-family: inherit;
+  cursor: pointer;
+}
+
+a {
+  color: var(--accent);
+}
+
+/* Visible focus states for keyboard users — required for real accessibility,
+   not just mouse/touch users. */
+button:focus-visible,
+a:focus-visible,
+input:focus-visible,
+textarea:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+
+/* =============================================================
+   BOOT SCREEN
+   ============================================================= */
+.boot-screen {
+  position: fixed;
+  inset: 0;
+  background: var(--bg-desktop-start);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  z-index: 999;
+  transition: opacity 6s ease;
+  background-image: url(./images/IMG_07.png); 
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+}
+
+.boot-screen.boot-hidden {
+  opacity: 0;
+  pointer-events: none;
+
+}
+
+.boot-logo {
+  width: 64px;
+  height: 64px;
+  border-radius: var(--radius-md);
+  background: var(--accent-soft);
+  border: 1px solid var(--glass-border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 22px;
+  color: var(--accent);
+}
+
+.boot-text {
+  color: black
+}
+
+
+/* =============================================================
+   DESKTOP
+   ============================================================= */
+.desktop {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  background-image: url(./images/IMG_03.png); 
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+}
+
+.desktop-icons {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  gap: 8px;
+  padding: 20px;
+  height: calc(100% - 64px); /* leave room for the taskbar */
+}
+
+.desktop-icon {
+  width: 88px;
+  background: transparent;
+  border: none;
+  color: var(--text-primary);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  padding: 10px 6px;
+  border-radius: var(--radius-sm);
+  transition: background 0.15s ease;
+}
+
+.desktop-icon:hover,
+.desktop-icon:focus-visible {
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.icon-glyph {
+  font-size: 30px;
+}
+
+.icon-label {
+  font-size: 12px;
+  text-align: center;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.6);
+}
+
+
+/* =============================================================
+   APP WINDOWS (shared styles — every window uses these)
+   ============================================================= */
+.app-window {
+  position: absolute;
+  top: 8%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: min(760px, 92vw);
+  height: min(72vh, 640px);
+  background: var(--window-bg);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-lg);
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  display: none; /* JS switches this to "flex" when the app is opened */
+  flex-direction: column;
+  overflow: hidden;
+  z-index: 10;
+}
+
+.app-window.window-open {
+  display: flex;
+}
+
+.app-window.window-minimized {
+  display: none;
+}
+
+.app-window.window-maximized {
+  top: 0;
+  left: 0;
+  transform: none;
+  width: 100vw;
+  height: calc(100vh - 64px);
+  border-radius: 0;
+}
+
+.window-titlebar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 14px;
+  background: rgba(255, 255, 255, 0.04);
+  border-bottom: 1px solid var(--glass-border);
+  cursor: move; /* signals that dragging happens from here */
+  user-select: none;
+}
+
+.window-title {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 600;
+  font-size: 14px;
+}
+
+.window-title-icon {
+  font-size: 15px;
+}
+
+.window-controls {
+  display: flex;
+  gap: 4px;
+}
+
+.window-btn {
+  width: 30px;
+  height: 26px;
+  border: none;
+  background: transparent;
+  color: var(--text-primary);
+  border-radius: var(--radius-sm);
+  font-size: 14px;
+  line-height: 1;
+}
+
+.window-btn:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.close-btn:hover {
+  background: var(--danger);
+  color: #1a1a1a;
+}
+
+.window-body {
+  flex: 1;
+  overflow-y: auto;
+  padding: 26px 30px;
+}
+
+.section-subheading {
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--accent);
+  margin-bottom: 10px;
+}
+
+.about-paragraph {
+  color: var(--text-secondary);
+  line-height: 1.6;
+  margin-bottom: 14px;
+  max-width: 68ch;
+}
+
+.skills-note {
+  color: var(--text-secondary);
+  font-size: 13px;
+  font-style: italic;
+  margin-top: 18px;
+  line-height: 1.5;
+}
+
+
+.me1 {
+   margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color:  #ece8d9;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    border-bottom: 1px solid #6b5049;
+}
+
+/* Main Card Container */
+.intro-card {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    max-width: 850px;
+    background-color: #d2cbca;
+    padding: 2.5rem 3rem;
+    box-sizing: border-box;
+    /* Top and bottom subtle accent borders from the image */
+    border-top: 6px solid #6b5049; 
+    border-bottom: 6px solid #6b5049;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    gap: 2.5rem;
+}
+
+/* Image Styling */
+.card-image-container {
+    flex: 0 0 240px;
+}
+
+.card-img {
+    width: 240px;
+    height: 280px;
+    object-fit: cover;
+    display: block;
+    border-radius: 2px;
+}
+
+/* Text Content */
+.card-content {
+    flex: 1;
+    text-align: center;
+    
+}
+
+.card-content h1 {
+    font-size: 2.8rem;
+    font-weight: 800;
+    color: #0d0d0d;
+    margin: 0 0 1rem 0;
+    line-height: 1.15;
+}
+
+/* Horizontal Line Divider */
+.divider {
+    border: none;
+    height: 2px;
+    background-color: #2b2b2b;
+    margin: 1.2rem 0;
+    width: 100%;
+}
+
+.card-content h2 {
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: #1a1a1a;
+    margin: 0;
+    line-height: 1.3;
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 650px) {
+    .intro-card {
+        flex-direction: column;
+        padding: 2rem;
+    }
+    
+    .card-content h1 {
+        font-size: 2rem;
+    }
+    
+    .card-content h2 {
+        font-size: 1.1rem;
+    }
+}
+
+
+
+/* Base styles and warm beige/grey background from image */
+.me2{
+    background-color: #d2cbca; /* Warm neutral background color */
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Layout section */
+.about-hero {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 3rem;
+    max-width: 1100px;
+    min-height: 80vh;
+    margin: 0 auto;
+    padding: 2rem;
+}
+
+/* Text Container */
+.about-content {
+    flex: 1.2;
+}
+
+.about-content h1 {
+    font-size: 3.8rem;
+    font-weight: 800;
+    color: #111111;
+    margin-bottom: 1.5rem;
+}
+
+.about-content p {
+    font-size: 1.35rem;
+    font-weight: 600;
+    line-height: 1.5;
+    color: #1a1a1a;
+    max-width: 650px;
+}
+
+/* Image Container */
+.about-image-container {
+    flex: 0.8;
+    display: flex;
+    justify-content: center;
+}
+
+.profile-img {
+    width: 100%;
+    max-width: 320px;
+    height: 380px;
+    object-fit: cover;
+    border-radius: 4px; /* Slight rounded edges matching the screenshot */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+}
+
+/* Responsive adjustment for mobile screens */
+@media (max-width: 768px) {
+    .about-hero {
+        flex-direction: column;
+        text-align: center;
+        gap: 2rem;
+    }
+    
+    .about-content h1 {
+        font-size: 2.8rem;
+    }
+    
+    .about-content p {
+        font-size: 1.1rem;
+    }
+}
+
+.about-flex-container {
+  display: flex;
+  gap: 150px;
+  flex-wrap: wrap;
+  padding: 20px 300px;
+  /* background-color: rgba(26, 31, 56, 0.75);  */
+    backdrop-filter: blur(12px);
+  background: radial-gradient(circle at 60% 40%, #0d1527 0%, #070a14 60%, #030408 100%);
+    background-attachment: fixed;
+    color: #ffffff;    
+}
+
+.about-photo-item {
+  flex: 0 0 140px;
+}
+
+.profile-photo {
+  width: 450px;
+  height: 740px;
+  border-radius: var(--radius-md);
+  object-fit: cover;
+  border: 1px solid var(--glass-border);
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.about-text-item {
+  flex: 1 1 320px;
+  min-width: 0;
+}
+.hero {
+  font-family: sans-serif;
+  font-size: 45px;
+}
+
+.about-name {
+  font-size: 26px;
+  font-weight: 700;
+  margin-bottom: 4px;
+}
+
+.about-tagline {
+  color: var(--accent);
+  font-size: 14px;
+  margin-bottom: 16px;
+}
+
+.about-goals-list {
+  list-style: none;
+  color: var(--text-secondary);
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.about-goals-list li::before {
+  content: "› ";
+  color: var(--accent);
+  background: 10231f;
+}
+/* ---------- About page CTA buttons (View Project / View Resume / Contact Me) ---------- */
+.about-cta-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  padding: 0 300px 32px;
+  position: fixed;
+  bottom: 0;
+}
+
+.app-link-btn {
+  display: inline-block;
+  background: #2f2f2f;
+  color: var(--accent);
+  font-family: inherit;
+  font-weight: 600;
+  font-size: 13px;
+  padding: 10px 18px;
+  border-radius: 20px;
+  border: 1px solid var(--accent);
+  cursor: pointer;
+  white-space: nowrap;
+  text-decoration: none;
+  /* background: palegoldenrod; */
+}
+
+.app-link-btn:hover,
+.app-link-btn:focus-visible {
+  background: var(--accent-soft);
+}
+
+.app-link-btn-primary {
+  background: var(--accent);
+  color: #10231f;
+}
+
+.app-link-btn-primary:hover,
+.app-link-btn-primary:focus-visible {
+  opacity: 0.9;
+  background: var(--accent);
+}
+
+@media (max-width: 900px) {
+  .about-cta-row {
+    padding: 0 20px 24px;
+  }
+}
+
+
+/* ---------- Skills window ---------- */
+.skills-flex-container {
+  display: flex;
+  gap: 40px;
+  flex-wrap: wrap;
+}
+
+.skills-flex-item {
+  flex: 1 1 240px;
+}
+
+.skill-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.skill-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 8px 10px;
+  background: rgba(255, 255, 255, 0.04);
+  border-radius: var(--radius-sm);
+}
+
+.skill-name {
+  font-size: 14px;
+}
+
+.skill-level {
+  font-size: 11px;
+  padding: 3px 9px;
+  border-radius: 20px;
+  white-space: nowrap;
+}
+
+.skill-level-beginner {
+  background: rgba(239, 111, 111, 0.18);
+  color: #ef9d9d;
+}
+
+.skill-level-learning {
+  background: rgba(245, 197, 106, 0.18);
+  color: #f5c56a;
+}
+
+.skill-level-intermediate {
+  background: var(--accent-soft);
+  color: var(--accent);
+}
+
+
+/* ---------- Projects window ---------- */
+.projects-flex-container {
+  display: grid;
+  /* grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); */
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 40px;
+  margin: 0 40px;
+   /* grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); */
+  /* gap: 24px; */
+  /* padding: 24px; */
+}
+
+.project-flex-item {
+  display: flex;
+  flex-direction: column;
+  background: rgba(255, 255, 255, 0.05);
+  /* border: 1px solid var(--glass-border); */
+   border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+   min-height: 480px;
+  transition: box-shadow 0.2s ease, border-color 0.2s ease;
+}
+.project-flex-item:hover {
+  border-color: rgba(255, 255, 255, 0.16);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+}
+
+/* Top banner screenshot. Nothing to edit here — just drop each
+   project's screenshot at the "image" path you set in script.js
+   (e.g. images/projects/my-shot.png) and it will fill this box. */
+.project-image {
+  width: 100%;
+  height: 250px;
+  object-fit: cover;
+  background: rgba(255, 255, 255, 0.06);
+   border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.project-details {
+  padding: 18px;
+   display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.project-name {
+  font-size: 19px;
+  font-weight: 700;
+  margin-bottom: 4px;
+}
+
+.project-year {
+  font-size: 12px;
+  color: var(--text-secondary);
+  margin-bottom: 8px;
+}
+
+.project-description {
+  color: var(--text-secondary);
+  font-size: 14px;
+  line-height: 1.55;
+  margin-bottom: 10px;
+}
+
+.project-tech-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-bottom: 10px;
+}
+
+.tech-tag {
+  font-size: 11px;
+  background: var(--accent-soft);
+  color: var(--accent);
+  padding: 4px 10px;
+  border-radius: 20px;
+}
+
+.project-learned {
+  font-size: 12px;
+  color: var(--text-secondary);
+  opacity: 0.7;
+  font-style: italic;
+  margin-bottom: 12px;
+}
+
+.project-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: auto;
+}
+
+.project-links a {
+  display: inline-block;
+  font-size: 13px;
+  font-weight: 600;
+  text-decoration: none;
+  padding: 8px 16px;
+  border-radius: 20px;
+  border: 1px solid var(--accent);
+  color: #10231f;
+  background: var(--accent);
+  white-space: nowrap;
+}
+
+.project-links a:hover {
+  background: var(--accent-soft);
+  text-decoration: none;
+}
+
+.projects-empty-message {
+  color: var(--text-secondary);
+  font-size: 14px;
+}
+
+
+/* ---------- Security Journey window ---------- */
+.security-block {
+  margin-bottom: 22px;
+}
+
+.security-list {
+  list-style: none;
+  color: var(--text-secondary);
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+.security-list li::before {
+  content: "› ";
+  color: var(--accent);
+}
+
+
+/* ---------- Resume window ---------- */
+.resume-header-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 20px;
+  flex-wrap: wrap;
+  margin-bottom: 24px;
+}
+
+.cv-download-btn {
+  display: inline-block;
+  background: var(--accent);
+  color: #10231f;
+  font-weight: 600;
+  font-size: 13px;
+  padding: 10px 18px;
+  border-radius: 20px;
+  text-decoration: none;
+  border: none;
+  white-space: nowrap;
+}
+
+.cv-download-btn:hover {
+  opacity: 0.9;
+}
+
+
+/* ---------- Contact window ---------- */
+.contact-flex-container {
+  display: flex;
+  gap: 40px;
+  flex-wrap: wrap;
+}
+
+.contact-flex-item {
+  flex: 1 1 260px;
+}
+
+.contact-links-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.contact-link {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  text-decoration: none;
+  color: var(--text-primary);
+  font-size: 14px;
+  padding: 8px 10px;
+  border-radius: var(--radius-sm);
+  background: rgba(255, 255, 255, 0.04);
+}
+
+.contact-link:hover {
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.contact-form {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-top: 8px;
+}
+
+.contact-form label {
+  font-size: 12px;
+  color: var(--text-secondary);
+  margin-top: 8px;
+}
+
+.contact-form input,
+.contact-form textarea {
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-sm);
+  padding: 9px 10px;
+  color: var(--text-primary);
+  font-family: inherit;
+  font-size: 13px;
+  resize: vertical;
+}
+
+.contact-submit-btn {
+  margin-top: 14px;
+  align-self: flex-start;
+  cursor: pointer;
+}
+
+.contact-status {
+  font-size: 13px;
+  margin-top: 10px;
+  color: var(--accent);
+  min-height: 18px;
+}
+
+
+/* =============================================================
+   START MENU
+   ============================================================= */
+.start-menu {
+  position: fixed;
+  bottom: 74px;
+  left: 50%;
+  transform: translateX(-50%) translateY(20px);
+  width: min(420px, 92vw);
+  background: var(--taskbar-bg);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-lg);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  padding: 20px;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.18s ease, transform 0.18s ease;
+  z-index: 50;
+}
+
+.start-menu.start-menu-open {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateX(-50%) translateY(0);
+}
+
+.start-menu-search input {
+  width: 100%;
+  padding: 10px 14px;
+  border-radius: 20px;
+  border: 1px solid var(--glass-border);
+  background: rgba(255, 255, 255, 0.06);
+  color: var(--text-primary);
+  font-size: 13px;
+  margin-bottom: 16px;
+}
+
+.start-menu-apps {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 6px;
+  min-height: 160px;
+}
+
+.start-app-btn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  background: transparent;
+  border: none;
+  color: var(--text-primary);
+  font-size: 12px;
+  padding: 12px 6px;
+  border-radius: var(--radius-sm);
+}
+
+.start-app-btn:hover,
+.start-app-btn:focus-visible {
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.start-app-btn .icon-glyph {
+  font-size: 22px;
+}
+
+.start-app-btn.app-hidden {
+  display: none; /* used by the search/filter feature */
+}
+
+.start-menu-footer {
+  border-top: 1px solid var(--glass-border);
+  margin-top: 16px;
+  padding-top: 14px;
+}
+
+.start-user {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 13px;
+}
+
+.start-user-avatar {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background: var(--accent-soft);
+  color: var(--accent);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 11px;
+  font-weight: 700;
+}
+
+
+/* =============================================================
+   TASKBAR
+   ============================================================= */
+.taskbar {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 64px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 0 14px;
+  background: var(--taskbar-bg);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-top: 1px solid var(--glass-border);
+  z-index: 60;
+}
+
+.start-btn,
+.taskbar-search-btn,
+.taskbar-app-btn {
+  width: 44px;
+  height: 44px;
+  border: none;
+  background: transparent;
+  color: var(--text-primary);
+  border-radius: var(--radius-sm);
+  font-size: 17px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.start-btn:hover,
+.taskbar-search-btn:hover,
+.taskbar-app-btn:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.start-btn.start-btn-active {
+  background: var(--accent-soft);
+}
+
+.start-btn-logo {
+  font-size: 20px;
+  color: var(--accent);
+}
+
+.taskbar-pinned {
+  display: flex;
+  gap: 4px;
+  margin-left: 4px;
+}
+
+/* Small dot under a taskbar icon shows the app is currently open —
+   this is the "active application indicator" the brief asked for. */
+.taskbar-app-btn.app-active::after {
+  content: "";
+  position: absolute;
+  bottom: 4px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: var(--accent);
+}
+
+.taskbar-tray {
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+}
+
+.taskbar-clock {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  font-size: 12px;
+  line-height: 1.4;
+  padding: 6px 10px;
+  border-radius: var(--radius-sm);
+}
+
+.taskbar-clock:hover {
+  background: rgba(255, 255, 255, 0.06);
+}
+
+
+/* =============================================================
+   RESPONSIVE — TABLETS AND PHONES
+   ============================================================= */
+@media (max-width: 768px) {
+  .desktop-icons {
+    flex-direction: row;
+    flex-wrap: wrap;
+    height: auto;
+  }
+
+  .app-window {
+    top: 0;
+    left: 0;
+    transform: none;
+    width: 100vw;
+    height: calc(100vh - 64px);
+    border-radius: 0;
+  }
+
+  .about-flex-container,
+  .skills-flex-container,
+  .contact-flex-container {
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .about-photo-item {
+    flex: 0 0 auto;
+  }
+
+
+  .start-menu {
+    width: 94vw;
+    bottom: 70px;
+  }
+
+  .start-menu-apps {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .taskbar-clock {
+    align-items: flex-end;
+  }
+}
+
+@media (max-width: 420px) {
+  .taskbar-pinned {
+    display: none; /* keep the taskbar usable on very small screens —
+                       the Start Menu still gives access to every app */
+  }
+}
