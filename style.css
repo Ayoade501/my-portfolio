@@ -691,7 +691,7 @@ textarea:focus-visible {
   font-size: 13px;
   font-weight: 600;
   text-decoration: none;
-  padding: 8px 16px;
+  padding: 12px 20px;
   border-radius: 20px;
   border: 1px solid var(--accent);
   color: #10231f;

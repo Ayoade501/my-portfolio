@@ -25,7 +25,7 @@
    ------------------------------------------------------------- */
 const projects = [
   {
-    name: "web.dev Clone (Responsive Rebuild)",
+    name: "web-dev-responsive-rebuild ",
     year: "2026",
     description: "A full responsive rebuild of the web.dev homepage, built from scratch with HTML and CSS and made to work across phone, tablet and desktop screen sizes.",
     tech: ["HTML", "CSS", "Flexbox", "Media Queries"],
@@ -36,13 +36,13 @@ const projects = [
   },
  
   {
-    name: "print-shop-ui-practiceprint-shop-ui-practice",
+    name: "print-shop-ui-practice",
     year: "2026",
     description: "A front-end rebuild of an e-commerce storefront layout, practicing product grids, category navigation, and cart/checkout UI patterns, A full responsive rebuild of the Printivo homepage, built from scratch with HTML and CSS and made to work across phone, tablet and desktop screen sizes.",
     tech: ["HTML", "CSS"],
     image: "images/IMG_12.png",
     github: "https://github.com/Ayoade501/print-shop-ui-practice",
-    demo: "https://github.com/Ayoade501/print-shop-ui-practice",
+    demo: "https://ayoade501.github.io/print-shop-ui-practice/",
     learned: "How real e-commerce sites structure product listings and navigation for usability, and how to build a responsive grid layout that adapts cleanly across screen sizes. and also mastered responsive layout debugging (fixed vs. fluid sizing), CSS specificity management, Debugged complex CSS cascade issues, eliminated absolute-positioning bugs on mobile viewportsand secure link handling for external resources.",
   },
   {
@@ -57,7 +57,7 @@ const projects = [
   
   },
   {
-    name: "Thoughtbot Clone",
+    name: "Robot-T-bot-landing-rebuild",
     year: "2026",
     description: "A rebuild of a design/dev agency-style landing page, focused on hero sections, service breakdowns, and clean typography-driven layout. A full responsive rebuild of the Thoghtbot homepage, built from scratch with HTML and CSS and made to work across phone, tablet and desktop screen sizes.",
     tech: ["HTML", "CSS"],
@@ -68,7 +68,7 @@ const projects = [
     securityNote: ""
   },
   {
-    name: "Encyclopedia-Style Search UI",
+    name: "encyclopedia-ui-practice",
     year: "2026",
     description: "A front-end rebuild of an encyclopedia-style search and article layout, Using positioning, focused on typography, content hierarchy, and readable long-form page structure.",
     tech: ["HTML", "CSS"],
@@ -79,7 +79,7 @@ const projects = [
     securityNote: ""
   },
   {
-    name: "Google Analytics Clone",
+    name: "analytics-style-dashboard ",
     year: "2026",
     description: "A front-end clone/rebuild of a Google Analytics-style dashboard, a dashboard-style landing page, practicing marketing-site layout patterns: hero section, feature highlights, and call-to-action placement. Built from scratch with HTML and CSS and made to work across phone, tablet and desktop screen sizes.",
     tech: ["HTML", "CSS", "grid", "Responsive Design"],
@@ -95,8 +95,8 @@ const projects = [
     description: "A developer portfolio designed to look and behave like a simplified desktop operating system, with draggable windows, a working taskbar clock, and a dynamic project list.",
     tech: ["HTML", "CSS", "Bootstrap", "JavaScript"],
     image: "images/IMG_16.png",
-    github: "#",
-    demo: "#",
+    github: "https://github.com/Ayoade501/my-portfolio",
+    demo: "https://ayoade501.github.io/my-portfolio/",
     learned: "Basic DOM manipulation, event listeners, and how to structure JavaScript so a UI with multiple moving parts (windows, taskbar, start menu) stays manageable.",
     securityNote: "Used textContent/createElement instead of innerHTML for anything dynamic, and added rel=\"noopener noreferrer\" to external links, as a small first step in building secure-by-default habits."
   },
