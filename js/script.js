@@ -31,7 +31,7 @@ const projects = [
     tech: ["HTML", "CSS", "Flexbox", "Media Queries"],
     image: "images/IMG_10.png",
     github: "https://github.com/Ayoade501/web-dev-responsive-rebuild",
-    demo: "https://ayoade501.github.io/web-dev-responsive-rebuild/",
+    demo: "https://web-dev-responsive-rebuild.vercel.app/",
     learned: "How to debug real responsive layout bugs — fixed heights vs. content, absolute positioning breaking on smaller screens, and how CSS cascade/specificity conflicts actually behave.",
   },
  
@@ -42,7 +42,7 @@ const projects = [
     tech: ["HTML", "CSS"],
     image: "images/IMG_12.png",
     github: "https://github.com/Ayoade501/print-shop-ui-practice",
-    demo: "https://ayoade501.github.io/print-shop-ui-practice/",
+    demo: "https://print-shop-ui-practice.vercel.app/",
     learned: "How real e-commerce sites structure product listings and navigation for usability, and how to build a responsive grid layout that adapts cleanly across screen sizes. and also mastered responsive layout debugging (fixed vs. fluid sizing), CSS specificity management, Debugged complex CSS cascade issues, eliminated absolute-positioning bugs on mobile viewportsand secure link handling for external resources.",
   },
   {
@@ -96,7 +96,7 @@ const projects = [
     tech: ["HTML", "CSS", "Bootstrap", "JavaScript"],
     image: "images/IMG_16.png",
     github: "https://github.com/Ayoade501/my-portfolio",
-    demo: "https://ayoade501.github.io/my-portfolio/",
+    demo: "https://my-portfolio-five-tan-mqti79t2bl.vercel.app/",
     learned: "Basic DOM manipulation, event listeners, and how to structure JavaScript so a UI with multiple moving parts (windows, taskbar, start menu) stays manageable.",
     securityNote: "Used textContent/createElement instead of innerHTML for anything dynamic, and added rel=\"noopener noreferrer\" to external links, as a small first step in building secure-by-default habits."
   },

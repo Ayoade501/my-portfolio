@@ -71,6 +71,8 @@ textarea:focus-visible {
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
+   background: linear-gradient(rgba(0, 0, 0, 0.55), rgba(0, 0, 0, 0.55)), 
+              url('./images/IMG_07.png') center/cover no-repeat;
 }
 
 .boot-screen.boot-hidden {
@@ -80,8 +82,8 @@ textarea:focus-visible {
 }
 
 .boot-logo {
-  width: 64px;
-  height: 64px;
+  width: 100px;
+  height: 100px;
   border-radius: var(--radius-md);
   background: var(--accent-soft);
   border: 1px solid var(--glass-border);
@@ -94,7 +96,9 @@ textarea:focus-visible {
 }
 
 .boot-text {
-  color: black
+  color: white;
+  font-size: 45px;
+  font-weight: 600;
 }
 
 
