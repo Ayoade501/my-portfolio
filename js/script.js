@@ -100,6 +100,16 @@ const projects = [
     learned: "Basic DOM manipulation, event listeners, and how to structure JavaScript so a UI with multiple moving parts (windows, taskbar, start menu) stays manageable.",
     securityNote: "Used textContent/createElement instead of innerHTML for anything dynamic, and added rel=\"noopener noreferrer\" to external links, as a small first step in building secure-by-default habits."
   },
+  {
+    name: "Sign-up/sign-in-page ",
+    year: "2026",
+    description: "A Modern Sign-up and Sign-in page.",
+    tech: ["HTML", "CSS", "Javascript",],
+    image: "images/IMG_19.png",
+    github: "https://github.com/Ayoade501/Sign-up-sign-in-page",
+    demo: "https://ayoade501.github.io/Sign-up-sign-in-page/",
+    learned: "How to build a sign in page and a sign up page",
+  },
 ];
 
 

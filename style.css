@@ -787,7 +787,6 @@ textarea:focus-visible {
   border-radius: var(--radius-sm);
   background: rgba(255, 255, 255, 0.04);
 }
-
 .contact-link:hover {
   background: rgba(255, 255, 255, 0.08);
 }
